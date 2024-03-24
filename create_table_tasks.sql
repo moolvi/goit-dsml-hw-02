@@ -10,4 +10,4 @@ CREATE TABLE IF NOT EXISTS tasks (
     FOREIGN KEY (user_id) REFERENCES users (id) 
         ON DELETE CASCADE 
         ON UPDATE cascade
-);
+)

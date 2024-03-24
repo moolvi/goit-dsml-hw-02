@@ -1,3 +1,1 @@
-DROP TYPE IF EXISTS STATUSENUM;
-
-CREATE TYPE STATUSENUM AS ENUM ('new', 'in progress', 'completed');
+CREATE TYPE STATUSENUM AS ENUM ('new', 'in progress', 'completed')
