@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS tasks (
     ID SERIAL PRIMARY KEY, 
     title VARCHAR(100), 
-    description text, 
+    description TEXT, 
     status_id INTEGER, 
     user_id INTEGER,
     FOREIGN KEY (status_id) REFERENCES status (id) 
