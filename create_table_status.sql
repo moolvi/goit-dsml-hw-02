@@ -1,4 +1,4 @@
 CREATE TABLE IF NOT EXISTS status (
     ID SERIAL PRIMARY KEY,
     name statusenum NOT NULL UNIQUE
-)
+    )

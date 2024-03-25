@@ -1,24 +1,29 @@
 import psycopg
 
-from connect import *
+from appdata_postgresql import *
 
 
 def read_file_sql(file_sql):
+    read_content = ""
     with open(file_sql, "r") as action:
         read_content = action.read()
     return read_content
 
-def execute_query(connection, query):
-    temp = connection.execute(query)
-    #return cursor.fetchone()
+def execute_query(query):
+    """ create a database connection to a PostgreSQL database """
+    with psycopg.connect(CONNINFO) as connection:
+        result = connection.execute(query)
 
+def create_tables():
+    for script in LIST_SQL_SCRIPTS_CREATE:
+        execute_query(read_file_sql(script))
+
+def drop_tables():
+    for script in LIST_SQL_SCRIPTS_DROP:
+        execute_query(read_file_sql(script))
 
 
 if __name__ == '__main__':
-
-    with create_connection() as connection:
-        if connection is not None:
-            temp1 = read_file_sql('create_types.sql')
-            print(execute_query(connection, temp1))
-        else:
-            print("Error! cannot create the database connection.")
+    print(create_tables())
+    print()
+    print(drop_tables())
