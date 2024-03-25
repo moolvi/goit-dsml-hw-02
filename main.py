@@ -1,5 +1,6 @@
 import psycopg
 
+from seed import *
 from appdata_postgresql import *
 
 
@@ -24,6 +25,11 @@ def drop_tables():
 
 
 if __name__ == '__main__':
-    print(create_tables())
-    print()
     print(drop_tables())
+    print(create_tables())
+
+    # fake_fullname, fake_email, fake_title, fake_description = generate_fake_data(NUMBER_FULLNAME, NUMBER_EMAIL, NUMBER_TITLE, NUMBER_DESCRIPTION)
+    # print()
+
+    for_users, for_statuses, for_tasks = prepare_data(*generate_fake_data(NUMBER_FULLNAME, NUMBER_EMAIL, NUMBER_TITLE, NUMBER_DESCRIPTION))
+    insert_data_to_db(for_users, for_statuses, for_tasks)
