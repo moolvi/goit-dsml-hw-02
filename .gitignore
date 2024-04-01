@@ -161,4 +161,5 @@ cython_debug/
 test*.py
 _*.txt
 autocheck*
-appdata*.py
+_appdata*.py
+_appdata*.txt
